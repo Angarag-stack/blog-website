@@ -42,6 +42,7 @@ export const Slider = () => {
         image={trendingBlog.cover_image}
         title={trendingBlog.title}
         date={trendingBlog.published_at}
+        tags={trendingBlog.tag_list}
       />
 
       <div className="flex ml-auto w-fit mt-2 gap-2">
@@ -63,7 +64,7 @@ export const Slider = () => {
 };
 
 export const Slide = (props) => {
-  const { image, title } = props;
+  const { image, title, tags, date } = props;
 
   return (
     <div
@@ -85,7 +86,14 @@ export const Slide = (props) => {
           backgroundColor: "rgba(0, 0, 0, 0.5)",
         }}
       >
-        <h className="text-white mt-4">{title}</h>
+        {" "}
+        <div className="w-[598px] h-[252px] bg-gray-100 rounded xl p-10">
+          <p className="w-fit h-fit  py-1 px-3 rounded-md bg-[#4B6BFB] text-gray-100">
+            {tags[0]}
+          </p>
+          <h className="text-black mt-4 text-4xl">{title}</h>
+          <p className="text-gray-400 text-base mt-6">{date}</p>
+        </div>
       </div>
     </div>
   );
