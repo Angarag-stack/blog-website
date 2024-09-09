@@ -15,7 +15,6 @@ export default function Home() {
       <Header />
       <Blog />
       <LoadMore />
-      <Footer />
     </div>
   );
 }
