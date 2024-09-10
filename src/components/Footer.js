@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <div className=" h-[495px] border border-solid   ">
@@ -19,9 +21,15 @@ export default function Footer() {
           </div>
         </div>
         <div className="text-gray-600   gap-2 ml-[180px]">
-          <p>Home </p>
-          <p>Blog</p>
-          <p>Contact</p>
+          <Link href={"/home"}>
+            <p>Home </p>
+          </Link>
+          <Link href={"/subblog"}>
+            <p>Blog</p>
+          </Link>
+          <Link href={"/contact"}>
+            <p>Contact</p>
+          </Link>
         </div>
         <div className="flex gap-4 ml-[180px] ">
           <img className=" w-4 h-4" src="fb.svg"></img>

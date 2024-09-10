@@ -1,14 +1,24 @@
+import Link from "next/link";
+
 export default function Content() {
   return (
     <div className="mx-auto max-w-[1000px] mb-[100px] flex mt-8 ">
       <div className="mr-[50px]">
-        <img className="w-[158px] h-[36px]" src=" Logo.svg"></img>
+        <Link href={"/home"}>
+          <img className="w-[158px] h-[36px]" src=" Logo.svg"></img>
+        </Link>
       </div>
 
       <div className="flex w-[667px] h-[24px] text-base gap-10 text-gray-600 justify-center">
-        <p>Home</p>
-        <p>Blog</p>
-        <p>Contact</p>
+        <Link href={"/home"}>
+          <p>Home</p>
+        </Link>
+        <Link href={"/subblog"}>
+          <p>Blog</p>
+        </Link>
+        <Link href={"/contact"}>
+          <p>Contact</p>
+        </Link>
       </div>
       <div>
         <div className="bg-gray-100 w-[166px] h-[36px] flex py-2 pl-4 pr-2 gap-3 rounded-md ">

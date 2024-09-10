@@ -20,7 +20,7 @@ const BlogPage = () => {
     return <p>...oh sorry error</p>;
   }
 
-  const bodyMarkdown = blogDetail.body_markdown;
+  const bodyMarkdown = blogDetail.body_markdown; /*     */
 
   return (
     <div className="mx-auto w-[655px] flex flex-col gap-10 justify-center">

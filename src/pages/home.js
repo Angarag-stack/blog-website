@@ -2,17 +2,17 @@ import Blog from "../components/Blog";
 import Header from "@/components/Header";
 import Trending from "@/components/Trending";
 import { Slider } from "@/components/Slider";
-import Footer from "@/components/Footer";
+import LoadMore from "@/components/LoadMore";
 
-const url = "https://dev.to/api/articles";
-
-export default function Home() {
+const home = () => {
   return (
-    <div className="">
+    <div>
       <Slider />
       <Trending />
       <Header />
       <Blog />
+      <LoadMore />
     </div>
   );
-}
+};
+export default home;
