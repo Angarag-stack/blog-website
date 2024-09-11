@@ -9,7 +9,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Page = () => {
   const { data, error, isLoading } = useSWR(url, fetcher);
-  const [sliceNumber, setSliceNumber] = useState(9);
+  const [sliceNumber, setSliceNumber] = useState(6);
 
   if (isLoading) {
     return <p>...loading</p>;
@@ -25,22 +25,24 @@ const Page = () => {
     setSliceNumber(20);
   };
   return (
-    <div className="max-w-[1000px]  grid grid-cols-3 mx-auto gap-5 rounded-[12px] ">
-      {slicedBlogs.map((blog) => {
-        return (
-          <Link href={`blog/${blog.id}`}>
-            <BlogCard
-              key={blog.id}
-              image={blog.cover_image}
-              title={blog.title}
-              date={blog.published_at}
-              tags={blog.tag_list}
-              // profileImg={blog.user.profile_image}
-              // name={blog.user.name}
-            />
-          </Link>
-        );
-      })}
+    <div>
+      <div className="max-w-[1000px]  grid grid-cols-3 mx-auto gap-5 rounded-[12px] ">
+        {slicedBlogs.map((blog) => {
+          return (
+            <Link href={`blog/${blog.id}`}>
+              <BlogCard
+                key={blog.id}
+                image={blog.cover_image}
+                title={blog.title}
+                date={blog.published_at}
+                tags={blog.tag_list}
+                // profileImg={blog.user.profile_image}
+                // name={blog.user.name}
+              />
+            </Link>
+          );
+        })}
+      </div>
       <div onClick={loadMore}>
         <LoadMore />
       </div>

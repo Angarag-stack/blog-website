@@ -16,22 +16,26 @@ const Page = () => {
   }
 
   return (
-    <div className="max-w-[1000px]  grid grid-cols-3 mx-auto gap-5 rounded-[12px] ">
-      {data.map((blog) => {
-        return (
-          <Link href={`blog/${blog.id}`}>
-            <BlogCard
-              key={blog.id}
-              image={blog.cover_image}
-              title={blog.title}
-              date={blog.published_at}
-              tags={blog.tag_list}
-              // profileImg={blog.user.profile_image}
-              // name={blog.user.name}
-            />
-          </Link>
-        );
-      })}
+    <div>
+      {" "}
+      <h1 className="text-2xl mx-auto max-w-[1000px] ">All Blog Post</h1>;
+      <div className="max-w-[1000px]  grid grid-cols-3 mx-auto gap-5 rounded-[12px] ">
+        {data.map((blog) => {
+          return (
+            <Link href={`blog/${blog.id}`}>
+              <BlogCard
+                key={blog.id}
+                image={blog.cover_image}
+                title={blog.title}
+                date={blog.published_at}
+                tags={blog.tag_list}
+                profileImg={blog.user.profile_image}
+                name={blog.user.name}
+              />
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -39,19 +43,21 @@ const Page = () => {
 export default Page;
 
 export const BlogCard = (props) => {
-  const { image, title, date, name, tags } = props;
+  const { image, title, date, name, tags, profileImg } = props;
 
   return (
     <div>
-      <h1 className="text-2xl">All Blog Post</h1>
       <div className="px-4 py-2 border border-solid rounded w-fit h-fit ">
         <img className="w-[360px] h-[240px]" src={image} alt={title} />
         <p className="w-fit h-7 text-[#4B6BFB] bg-[#4B6BFB0D] py-1 px-3 rounded-md mt-4">
           {tags[0]}
         </p>
         <h2 className="text-2xl mt-5 ">{title}</h2>
+        {/* <img className="w-9 h-9 rounded-full " src={profileImg}></img> */}
         <p className="text-gray-400 mt-3">{date}</p>
       </div>
     </div>
   );
 };
+{
+}

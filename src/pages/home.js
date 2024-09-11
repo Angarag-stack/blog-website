@@ -11,7 +11,7 @@ const home = () => {
       <Trending />
       <Header />
       <Blog />
-      <LoadMore />
+      {/* <LoadMore /> */}
     </div>
   );
 };
