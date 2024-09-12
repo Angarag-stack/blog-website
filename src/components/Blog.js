@@ -9,6 +9,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Page = () => {
   const { data, error, isLoading } = useSWR(url, fetcher);
+  console.log(data);
   const [sliceNumber, setSliceNumber] = useState(6);
 
   if (isLoading) {
@@ -56,9 +57,9 @@ export const BlogCard = (props) => {
   const { image, title, date, name, tags } = props;
 
   return (
-    <div className="px-4 py-2 border border-solid rounded w-fit h-fit ">
+    <div className="px-4 py-2 border border-solid rounded w-[300px] h-[450px] ">
       <img className="w-[360px] h-[240px]" src={image} alt={title} />
-      <p className="w-fit h-7 text-[#4B6BFB] bg-[#4B6BFB0D] py-1 px-3 rounded-md mt-4">
+      <p className="w-fit h-7 text-[#4B6BFB] bg-[#4B6BFB0D] py-1 px-3 rounded-md mt-4 ">
         {tags[0]}
       </p>
       <h2 className="text-2xl mt-5 ">{title}</h2>

@@ -1,4 +1,4 @@
-import Subblog from "../components/subblog";
+import Subblog from "../components/Subblog";
 
 const Page = () => {
   return <Subblog />;

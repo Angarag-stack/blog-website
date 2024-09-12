@@ -1,11 +1,15 @@
 import Link from "next/link";
 import useSWR from "swr";
+import { useState } from "react";
+import LoadMore from "@/components/LoadMore";
+
 const url = "https://dev.to/api/articles";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Page = () => {
   const { data, error, isLoading } = useSWR(url, fetcher);
+  const [sliceNumber, setSliceNumber] = useState(6);
 
   if (isLoading) {
     return <p>...loading</p>;
@@ -14,13 +18,17 @@ const Page = () => {
   if (error) {
     return <p>...oh sorry error</p>;
   }
+  const slicedBlogs = [...data].slice(0, sliceNumber);
+
+  const loadMore = () => {
+    setSliceNumber(20);
+  };
 
   return (
     <div>
-      {" "}
       <h1 className="text-2xl mx-auto max-w-[1000px] ">All Blog Post</h1>;
       <div className="max-w-[1000px]  grid grid-cols-3 mx-auto gap-5 rounded-[12px] ">
-        {data.map((blog) => {
+        {slicedBlogs.map((blog) => {
           return (
             <Link href={`blog/${blog.id}`}>
               <BlogCard
@@ -36,6 +44,9 @@ const Page = () => {
           );
         })}
       </div>
+      <div onClick={loadMore}>
+        <LoadMore />
+      </div>
     </div>
   );
 };
@@ -46,15 +57,18 @@ export const BlogCard = (props) => {
   const { image, title, date, name, tags, profileImg } = props;
 
   return (
-    <div>
-      <div className="px-4 py-2 border border-solid rounded w-fit h-fit ">
+    <div className="rounded-xl  ">
+      <div className="px-4 py-2 border border-solid rounded w-[300px] h-[488px] ">
         <img className="w-[360px] h-[240px]" src={image} alt={title} />
         <p className="w-fit h-7 text-[#4B6BFB] bg-[#4B6BFB0D] py-1 px-3 rounded-md mt-4">
           {tags[0]}
         </p>
         <h2 className="text-2xl mt-5 ">{title}</h2>
-        {/* <img className="w-9 h-9 rounded-full " src={profileImg}></img> */}
-        <p className="text-gray-400 mt-3">{date}</p>
+        <div className="flex mt-5">
+          <img className="w-9 h-9 rounded-full " src={profileImg}></img>
+          <p className="text-xs text-gray-400 py-2 px-2">{name}</p>
+          {/* <p className="text-gray-400 mt-3 ">{date}</p> */}
+        </div>
       </div>
     </div>
   );
