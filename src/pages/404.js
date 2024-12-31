@@ -1,24 +1,20 @@
 import Link from "next/link";
 
-const custom404 = () => {
+export default function Custom404() {
   return (
-    <div className="flex mx-auto max-w-[640px] gap-[40px] mb-[100px] ">
-      <div>
-        <h1 className="text-[72px] border-r  h-[160px] w-[170px]">404</h1>
-      </div>
-      <div>
-        <p className="text-2xl mb-5">Page Not Found</p>
-        <p className="text-lg text-gray-500 w-[350px] h-[52px] mb-5">
-          We're sorry, This page is unknown or does not exist the page you are
+    <div className="flex justify-evenly px-10 xl:max-w-[1024px] xl:m-auto  gap-[20px] lg:gap-[100px] pb-20">
+      <h1 className="font-normal text-7xl">404</h1>
+      <div className="border-r"></div>
+      <div className=" flex flex-col gap-7">
+        <div className="font-medium text-2xl">Page not found</div>
+        <div className="text-gray-500 text-lg">
+          We are sorry, This page is unknown or does not exist the page you are
           looking for.
-        </p>
-        <Link href={"/home"}>
-          <button className="bg-[#4B6BFB] text-white py-[10px] px-4 text-sm rounded-md">
-            Back To Home
-          </button>
+        </div>
+        <Link href="/">
+          <button className="btn btn-primary w-fit px-10">Back to Home</button>
         </Link>
       </div>
     </div>
   );
-};
-export default custom404;
+}

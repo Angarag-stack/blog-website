@@ -1,13 +1,12 @@
-import Content from "@/components/Content";
-import "../styles/globals.css";
-import Footer from "@/components/Footer";
+import { Layout } from "@/components/Layout";
+import { ThemeContextProvider } from "@/components/ThemeContext";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
-    <div>
-      <Content />
-      <Component {...pageProps} />
-      <Footer />
-    </div>
+    <ThemeContextProvider>
+      {" "}
+      <Layout>{<Component {...pageProps} />}</Layout>
+    </ThemeContextProvider>
   );
 }

@@ -1,51 +1,83 @@
-import Link from "next/link";
+import { Ig } from "./icons/Ig";
+import { Fb } from "./icons/Fboook";
+import { Twitter } from "./icons/twitter";
+import { In } from "./icons/In";
+import { Blogo } from "./icons/BlogLogo";
 
-export default function Footer() {
+const abouts = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+  "Email : info@jstemplate.net",
+  "Phone : 880 123 456 789",
+];
+
+const header = ["Home", "Blog", "Contact"];
+const link = ["Terms of Use", "Privacy Policy", "Cookie Policy"];
+const Text = (props) => {
+  const { text } = props;
   return (
-    <div className=" h-[495px] border border-solid   ">
-      <div className="mt-[34px] mx-auto max-w-[1000px] flex  ">
-        <div>
-          <h1 className="text-lg">About</h1>
-          <p className="w-[280px] h-[120px] text-sm text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam
-          </p>
-          <div className="flex gap-1 text-base">
-            <p>Email : </p>
-            <p className="text-gray-600"> info@jstemplate.net</p>
-          </div>
-          <div className="flex gap-1 text-base ">
-            <p>Phone :</p>
-            <p className="text-gray-600"> 880 123 456 789</p>
-          </div>
+    <div>
+      <p className="lg:w-[280px] font-extralight text-base text-gray-700">
+        {text}
+      </p>
+    </div>
+  );
+};
+const Link = (props) => {
+  const { text } = props;
+  return (
+    <div>
+      <p className="">{text}</p>
+    </div>
+  );
+};
+export const Footer = () => {
+  return (
+    <div className="bg-gray-100  xl:w-[1216px] lg:py-[64px] lg:mx-auto">
+      <div className=" text-center lg:flex justify-between">
+        <div className="lg:text-start">
+          <p className="text-lg font-medium ">About</p>
+          {abouts.map((about, index) => {
+            return <Text key={index} text={about} />;
+          })}
         </div>
-        <div className="text-gray-600   gap-2 ml-[180px]">
-          <Link href={"/home"}>
-            <p>Home </p>
-          </Link>
-          <Link href={"/subblog"}>
-            <p>Blog</p>
-          </Link>
-          <Link href={"/contact"}>
-            <p>Contact</p>
-          </Link>
+        <div className="gap-2 ">
+          {header.map((element, index) => {
+            return (
+              <div
+                className="font-extralight text-base text-gray-700"
+                key={index}
+              >
+                {element}
+              </div>
+            );
+          })}
         </div>
-        <div className="flex gap-4 ml-[180px] ">
-          <img className=" w-4 h-4" src="fb.svg"></img>
-          <img className=" w-4 h-4" src="twitter.svg"></img>
-          <img className=" w-4 h-4" src="insta.svg"></img>
-          <img className=" w-4 h-4" src="linkedin.svg"></img>
+        <div className=" flex justify-center  gap-4 lg:flex lg:gap-4">
+          <Ig />
+          <Fb />
+          <Twitter />
+          <In />
         </div>
       </div>
-      <div className="mx-auto max-w-[1000px] flex justify-between  py-[32px] border-t-2 mt-4  ">
-        <img className="w-[231px] h-[54px] " src="footer.svg"></img>
-        <div className="flex text-gray-600 text-base  gap-3 py-2">
-          <p className="border-r w-[110px] h-[24px]  ">Terms of Use</p>
-          <p className="border-r w-[110px] h-[24px]">Privacy Policy</p>
-          <p className=" w-[105px] h-[24px]">Cookie Policy</p>
+      <div className="sm:flex justify-between py-8 mt-5 border-t-2">
+        <div className="flex gap-2">
+          <Blogo></Blogo>
+          <div className="">
+            <div className="flex">
+              <p className="font-semibold">Meta</p>
+              <p>Blog</p>
+            </div>
+            <p className="font-extralight text-base text-gray-700 ">
+              © All Rights Reserved.
+            </p>
+          </div>
+        </div>
+        <div className="sm:flex gap-4 font-extralight text-base text-gray-700">
+          {link.map((element, index) => {
+            return <Link key={index} text={element}></Link>;
+          })}
         </div>
       </div>
     </div>
   );
-}
+};
